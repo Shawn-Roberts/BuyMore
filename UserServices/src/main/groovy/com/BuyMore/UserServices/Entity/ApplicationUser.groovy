@@ -23,7 +23,7 @@ class ApplicationUser {
 
     @Column(name="uniqueID")
     @NotNull
-    public UUID uniqueID
+    private UUID uniqueID
 
     @Column(name="firstName")
     @NotNull
@@ -61,18 +61,18 @@ class ApplicationUser {
     //SETTERS
     void setFirstName(String firstName) throws IllegalArgumentException, NullPointerException {
         if(StringValidation.validateStringField(firstName,"firstName"))
-            this.firstName = firstName
+            this.firstName = new String(firstName)
     }
 
     void setLastName(String lastName) throws IllegalArgumentException, NullPointerException {
         if(StringValidation.validateStringField(lastName,"lastName"))
-            this.lastName = lastName
+            this.lastName = new String(lastName)
 
     }
 
     void setEmail(String email) throws IllegalArgumentException, NullPointerException {
-        if(EmailValidation.validateEmail(email))
-            this.email = email
+        if(EmailValidation.validateEmailField(email))
+            this.email = new String(email)
     }
 
     private setUniqueID() { this.uniqueID = UUID.randomUUID() }

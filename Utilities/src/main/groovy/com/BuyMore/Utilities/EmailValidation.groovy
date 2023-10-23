@@ -11,7 +11,7 @@ abstract class EmailValidation {
                 .matcher(emailAddress)
                 .matches();
     }
-    static boolean validateEmail(String email) throws IllegalArgumentException, NullPointerException
+    static boolean validateEmailField(String email) throws IllegalArgumentException, NullPointerException
     {
         if(!email){throw new NullPointerException("Error with argument name, cannot be null")}
         if(email.isEmpty() || email.isBlank()) {throw new IllegalArgumentException("Error name cannot be null")}
