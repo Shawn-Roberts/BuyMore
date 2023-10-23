@@ -1,4 +1,4 @@
-package com.BuyMore.UserServices.Common
+package com.BuyMore.Utilities
 
 import java.util.regex.Pattern;
 

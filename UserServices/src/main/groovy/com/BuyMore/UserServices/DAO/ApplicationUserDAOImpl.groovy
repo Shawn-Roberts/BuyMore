@@ -40,7 +40,7 @@ class ApplicationUserDAOImpl implements ApplicationUserDAO {
     }
 
     @Override
-    ApplicationUser saveApplicationUser() {
+    ApplicationUser saveApplicationUser(ApplicationUser applicationUser) {
         return userForPOC
     }
 

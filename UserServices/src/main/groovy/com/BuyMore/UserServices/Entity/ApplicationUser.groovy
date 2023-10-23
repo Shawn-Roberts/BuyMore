@@ -1,7 +1,7 @@
 package com.BuyMore.UserServices.Entity
 
-import com.BuyMore.UserServices.Common.EmailValidation
-import com.BuyMore.UserServices.Common.StringValidation
+import com.BuyMore.Utilities.EmailValidation
+import com.BuyMore.Utilities.StringValidation
 import groovy.transform.builder.Builder
 import jakarta.persistence.Column
 import jakarta.persistence.Entity

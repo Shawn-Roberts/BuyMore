@@ -12,6 +12,7 @@
             <option value="$PROJECT_DIR$/OrderService" />
             <option value="$PROJECT_DIR$/ProductServices" />
             <option value="$PROJECT_DIR$/UserServices" />
+            <option value="$PROJECT_DIR$/Utilities" />
           </set>
         </option>
       </GradleProjectSettings>
