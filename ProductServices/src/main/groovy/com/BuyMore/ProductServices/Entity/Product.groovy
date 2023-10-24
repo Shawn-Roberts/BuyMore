@@ -20,7 +20,7 @@ class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Long userID
+    private Long productID
 
     @Column(name="uniqueID")
     @NotNull

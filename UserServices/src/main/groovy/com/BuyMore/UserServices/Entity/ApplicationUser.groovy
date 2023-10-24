@@ -41,7 +41,7 @@ class ApplicationUser {
     //CONSTRUCTORS
     ApplicationUser(){}
 
-    //BUILDER
+    //BUILDERS
     @Builder(builderMethodName = 'createUser')
     ApplicationUser(String firstName, String lastName, String email)
     {
