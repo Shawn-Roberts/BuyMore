@@ -14,9 +14,14 @@ import org.springframework.web.bind.annotation.RestController
 @RequestMapping("/user")
 class ApplicationUserController {
 
-    @Autowired
-    ApplicationUserService applicationUserService
+
+    private final ApplicationUserService applicationUserService
     private static final Logger log = LogManager.getLogger(ApplicationUserController.class)
+
+    @Autowired
+    ApplicationUserController(final ApplicationUserService applicationUserService) {
+        this.applicationUserService = applicationUserService
+    }
 
     @GetMapping("/")
     ResponseEntity<Object> findAll() {

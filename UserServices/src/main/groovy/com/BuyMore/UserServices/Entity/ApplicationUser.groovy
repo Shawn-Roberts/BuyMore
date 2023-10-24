@@ -71,7 +71,7 @@ class ApplicationUser {
     }
 
     void setEmail(String email) throws IllegalArgumentException, NullPointerException {
-        if(EmailValidation.validateEmailField(email))
+        if(EmailValidation.validateEmailField(email, "email"))
             this.email = new String(email)
     }
 
