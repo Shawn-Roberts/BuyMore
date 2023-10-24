@@ -23,11 +23,10 @@ class ProductServiceImpl implements ProductService{
     ResponseEntity<Object> findAll() {
         try{
             log.info("Product Service  - request findAll returned successful response")
-            ProductResponseHandler.generateResponse("Results Returned",HttpStatus.OK,applicationUserDAO.findAll())
+            ProductResponseHandler.generateResponse("Results Returned",HttpStatus.OK,productDAO.findAll())
         }
         catch(Exception e)
         {
-            Product.cre
             log.error("Product Service  - request findAll Exception: ${e.getMessage()}")
             return  ProductResponseHandler.generateResponse("Bad Request: ${e.getMessage()}",HttpStatus.BAD_REQUEST,[])
         }
@@ -37,7 +36,7 @@ class ProductServiceImpl implements ProductService{
     ResponseEntity<Object> findById(String id) {
         try{
             log.info("Product Service  Error - request findByID with params ${id} returned successful response")
-            ProductResponseHandler.generateResponse("Results Returned",HttpStatus.OK,applicationUserDAO.findById(id))
+            ProductResponseHandler.generateResponse("Results Returned",HttpStatus.OK,productDAO.findById(id))
         }
         catch(IllegalArgumentException e)
         {
@@ -54,7 +53,7 @@ class ProductServiceImpl implements ProductService{
     ResponseEntity<Object> search(String parameter) {
         try {
             log.info("Product Service  - request findAllSimpleQuery with params ${parameter} returned successful response")
-            ProductResponseHandler.generateResponse("Results Returned", HttpStatus.OK,applicationUserDAO.search(parameter))
+            ProductResponseHandler.generateResponse("Results Returned", HttpStatus.OK,productDAO.search(parameter))
         }
         catch(Exception e){
             log.error("Product Service  Error  - reuqest findAllSimpleQuery General Error: ${e.getMessage()} ")

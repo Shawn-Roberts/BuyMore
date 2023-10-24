@@ -16,7 +16,7 @@ class ProductController {
 
     @Autowired
     ProductService productService
-    private static final Logger log = LogManager.getLogger(ProductService.class)
+    private static final Logger log = LogManager.getLogger(ProductController.class)
 
     @GetMapping("/")
     ResponseEntity<Object> findAll() {

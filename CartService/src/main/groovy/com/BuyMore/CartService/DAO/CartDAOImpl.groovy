@@ -1,6 +1,7 @@
 package com.BuyMore.CartService.DAO
 
 import com.BuyMore.CartService.Entity.Cart
+import com.BuyMore.CartService.Entity.CartDetails
 import jakarta.persistence.EntityManager
 import jakarta.persistence.PersistenceContext
 import org.springframework.beans.factory.annotation.Autowired
@@ -22,12 +23,12 @@ class CartDAOImpl implements CartDAO {
     private Cart cartPOC = Cart.createCart()
     .userID(UUID.randomUUID())
     .productID(UUID.randomUUID())
+    .build()
 
     @Override
-    ArrayList<Cart> findByUserID(UUID userID) {
-        return List.of(cartPOC)
+    CartDetails displayCartItemsByUser(UUID userID) {
+        return null
     }
-
 
     @Override
     Cart save(Cart cart) {

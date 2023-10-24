@@ -16,7 +16,7 @@ class ApplicationUserController {
 
     @Autowired
     ApplicationUserService applicationUserService
-    private static final Logger log = LogManager.getLogger(ApplicationUserService.class)
+    private static final Logger log = LogManager.getLogger(ApplicationUserController.class)
 
     @GetMapping("/")
     ResponseEntity<Object> findAll() {
