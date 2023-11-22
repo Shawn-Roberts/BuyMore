@@ -36,7 +36,6 @@ class ApplicationUserDAOImpl implements ApplicationUserDAO {
     Collection<ApplicationUser> findAll() throws Exception {
         try
         {
-            log.debug("ApplicationUser DAO - findAll ")
             TypedQuery<ApplicationUser> query = entityManager.createQuery("SELECT U FROM ApplicationUser U",ApplicationUser.class)
             return query.getResultList()
         }
@@ -48,23 +47,19 @@ class ApplicationUserDAOImpl implements ApplicationUserDAO {
     }
 
     @Override
-    ApplicationUser findById(String id) throws NoResultException, Exception {
+    ApplicationUser findById(Long id) throws NoResultException, Exception {
         try
         {
-            log.debug("ApplicationUser DAO - findById with argurments ${id} ")
             TypedQuery<ApplicationUser> query = entityManager.createQuery("SELECT U FROM ApplicationUser U where U.id=:id",ApplicationUser.class)
             query.setParameter("id",id)
             return query.getSingleResult()
         }
         catch(NoResultException ignored)
         {
-            log.info("ApplicationUser DAO  - findById no result returned with id ${id}")
             throw ignored
         }
         catch(Exception e)
         {
-            log.error("ApplicationUser DAO Error -findById with id ${id}")
-            log.error("${e.getClass()} : ${e.getMessage()}")
             throw e
         }
 
@@ -75,102 +70,86 @@ class ApplicationUserDAOImpl implements ApplicationUserDAO {
     ApplicationUserDTO saveApplicationUser(ApplicationUserDTO  userDTO) throws EntityExistsException, IllegalArgumentException, Exception {
         try
         {
-            log.debug("ApplicationUser DAO - saveApplicationUser")
-            ApplicationUser user = mapper.applicationUserDTOToApplicationUser(userDTO)
-            entityManager.persist(user)
-            return mapper.applicationUserToApplicationUserDTO(user)
+            ApplicationUser userToSave = mapper.applicationUserDTOToApplicationUser(userDTO)
+            entityManager.persist(userToSave)
+            return mapper.applicationUserToApplicationUserDTO(userToSave)
         }
         catch(EntityExistsException e)
         {
-            log.error("ApplicationUser DAO - saveApplicationUser entity already exists ")
             throw e
         }
         catch(IllegalArgumentException e)
         {
-            log.error("ApplicationUser DAO - saveApplicationUser IllegalArgurmentException ${e.getMessage()}")
             throw e
         }
         catch(Exception e)
         {
-            log.error("ApplicationUser DAO - saveApplicationUser General Error: ${e.getClass()}: ${e.getMessage()}")
             throw e
         }
 
     }
 
     @Override
-    ApplicationUser updateApplicationUser(ApplicationUser applicationUser) {
+    ApplicationUserDTO updateApplicationUser(ApplicationUserDTO userDTO) {
         try
         {
-            log.debug("ApplicationUser DAO - updateApplicationUser")
-            println applicationUser.getUniqueID()
-            println applicationUser.getFirstName()
-            println applicationUser.getLastName()
-            entityManager.merge(applicationUser)
-            return applicationUser
+            ApplicationUser userToUpdate = findById(userDTO.getUserID())
+            mapper.updateApplicationUserFromDTO(userDTO,userToUpdate)
+            entityManager.flush()
+            return mapper.applicationUserToApplicationUserDTO(userToUpdate)
         }
         catch(EntityExistsException e)
         {
-            log.error("ApplicationUser DAO - updateApplicationUser entity already exists ")
             throw e
         }
         catch(IllegalArgumentException e)
         {
-            log.error("ApplicationUser DAO - updateApplicationUser IllegalArgurmentException ${e.getMessage()}")
             throw e
         }
         catch(Exception e)
         {
-            log.error("ApplicationUser DAO - updateApplicationUser General Error: ${e.getClass()}: ${e.getMessage()}")
             throw e
         }
     }
 
     @Override
     @Transactional(propagation = Propagation.REQUIRES_NEW)
-    void deleteApplicationUserById(String id)
+    void deleteApplicationUser(ApplicationUserDTO userDTO) {
+
+        try{
+            entityManager.remove(mapper.applicationUserDTOToApplicationUser(userDTO))
+        }
+        catch(IllegalArgumentException e)
+        {
+            throw e
+        }
+        catch(Exception e)
+        {
+            throw e
+        }
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    void deleteApplicationUserById(Long id)
     {
         try
         {
-            log.debug("ApplicationUser DAO - deleteApplicationUserById with params ${id}")
             ApplicationUser u = findById(id)
-            deleteApplicationUser(u)
+            entityManager.remove(u)
         }
         catch(NoResultException ignored)
         {
-            log.info("ApplicationUser DAO  - deleteApplicationUserById no result returned with id ${id}")
             throw ignored
         }
         catch(IllegalArgumentException e)
         {
-            log.error("ApplicationUser DAO - saveApplicationUser IllegalArgurmentException ${e.getMessage()}")
             throw e
         }
         catch(Exception e)
         {
-            log.error("ApplicationUser DAO - deleteApplicationUserById General Error: ${e.getClass()}: ${e.getMessage()}")
             throw e
         }
     }
 
-    @Override
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
-    void deleteApplicationUser(ApplicationUser applicationUser) {
-
-        try{
-            log.debug("ApplicationUser DAO - deleteApplicationUser")
-            entityManager.remove(applicationUser)
-        }
-        catch(IllegalArgumentException e)
-        {
-            log.error("ApplicationUser DAO - deleteApplicationUser IllegalArgurmentException ${e.getMessage()}")
-            throw e
-        }
-        catch(Exception e)
-        {
-            log.error("ApplicationUser DAO - deleteApplicationUser General Error: ${e.getClass()}: ${e.getMessage()}")
-            throw e
-        }
-
-    }
 }

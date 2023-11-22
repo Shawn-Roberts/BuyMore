@@ -53,7 +53,7 @@ class ApplicationUser {
 
     //GETTERS
     Long getUserID() { return userID }
-    UUID getUniqueID() { return this.uniqueID }
+    UUID getUniqueID() { return uniqueID }
     String getFirstName() { return firstName }
     String getLastName() { return lastName }
     String getEmail() { return email }

@@ -5,9 +5,9 @@ import com.BuyMore.UserServices.Entity.ApplicationUser
 
 interface ApplicationUserDAO {
     Collection<ApplicationUser> findAll()
-    ApplicationUser findById(String id)
+    ApplicationUser findById(Long id)
     ApplicationUserDTO saveApplicationUser(ApplicationUserDTO  userDTO)
-    ApplicationUser updateApplicationUser(ApplicationUser applicationUser)
-    void deleteApplicationUserById(String id)
-    void deleteApplicationUser(ApplicationUser applicationUser)
+    ApplicationUserDTO updateApplicationUser(ApplicationUserDTO userDTO)
+    void deleteApplicationUser(ApplicationUserDTO userDTO)
+    void deleteApplicationUserById(Long id)
 }

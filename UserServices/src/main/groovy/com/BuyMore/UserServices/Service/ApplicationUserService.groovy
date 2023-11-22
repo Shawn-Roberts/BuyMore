@@ -6,9 +6,9 @@ import org.springframework.http.ResponseEntity
 
 interface ApplicationUserService {
     ResponseEntity<Object> findAll()
-    ResponseEntity<Object> findById(String id)
+    ResponseEntity<Object> findById(Long id)
     ResponseEntity<Object> saveUser(ApplicationUserDTO userDTO)
-    ResponseEntity<Object> updateUser(ApplicationUser updatedUser)
-    ResponseEntity<Object> deleteUserById(String id)
-    ResponseEntity<Object> deleteUser(ApplicationUser applicationUser)
+    ResponseEntity<Object> updateUser(ApplicationUserDTO userDTO)
+    ResponseEntity<Object> deleteUser(ApplicationUserDTO userDTO)
+    ResponseEntity<Object> deleteUserById(Long id)
 }
