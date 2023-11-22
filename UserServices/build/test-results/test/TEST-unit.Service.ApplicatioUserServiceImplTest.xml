@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="unit.Service.ApplicatioUserServiceImplTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2023-11-22T01:47:15" hostname="GCLIT302" time="0.458">
+  <properties/>
+  <testcase name="findAllReturnsResponseEntityWhenNoException()" classname="unit.Service.ApplicatioUserServiceImplTest" time="0.456"/>
+  <testcase name="findAllCallsDAOMethodFindAll()" classname="unit.Service.ApplicatioUserServiceImplTest" time="0.001"/>
+  <testcase name="findAllReturnsResponseEntityWhenException()" classname="unit.Service.ApplicatioUserServiceImplTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

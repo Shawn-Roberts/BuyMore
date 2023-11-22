@@ -1,7 +1,7 @@
 package com.BuyMore.ProductServices.Entity
 
-import com.BuyMore.Utilities.PriceValidation
-import com.BuyMore.Utilities.StringValidation
+import com.BuyMore.Utilities.PriceValidationTests
+import com.BuyMore.Utilities.StringValidationTests
 import groovy.transform.builder.Builder
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
@@ -70,25 +70,25 @@ class Product {
 
     void setName(String name) throws IllegalArgumentException, NullPointerException
     {
-        if(StringValidation.validateStringField(name,"name"))
+        if(StringValidationTests.validateStringField(name,"name"))
         this.name = new String(name)
     }
 
     void setDescription(String description) throws IllegalArgumentException, NullPointerException
     {
-        if(StringValidation.validateStringField(description,"description"))
+        if(StringValidationTests.validateStringField(description,"description"))
         this.description = new String(description)
     }
 
     void setPrice(BigDecimal price) throws IllegalArgumentException, NullPointerException
     {
-        if(PriceValidation.validatePrice(price,"price"))
+        if(PriceValidationTests.validatePrice(price,"price"))
         this.price = BigDecimal.valueOf(price)
     }
 
     void setRating(Double rating) throws IllegalArgumentException, NullPointerException
     {
-        if(PriceValidation.validatePrice(rating,"rating"))
+        if(PriceValidationTests.validatePrice(rating,"rating"))
         this.rating = Double.valueOf(rating)
     }
 

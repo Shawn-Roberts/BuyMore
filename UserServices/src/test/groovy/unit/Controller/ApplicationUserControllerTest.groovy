@@ -1,4 +1,4 @@
-package unit.controller
+package unit.Controller
 
-class ApplicationUserControllerTests {
+class ApplicationUserControllerTest {
 }

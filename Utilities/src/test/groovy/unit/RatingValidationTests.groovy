@@ -8,7 +8,7 @@ import static org.assertj.core.api.Assertions.assertThatNullPointerException
 import static org.assertj.core.api.Assertions.assertThatThrownBy
 
 
-class RatingValidationTest {
+class RatingValidationTests {
 
     @Test
     void validateRatingFieldReturnsTrueWithValidRating() {

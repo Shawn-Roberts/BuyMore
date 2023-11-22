@@ -1,6 +1,6 @@
 package unit
 
-import com.BuyMore.Utilities.RatingValidation
+
 import com.BuyMore.Utilities.StringValidation
 import org.junit.jupiter.api.Test
 
@@ -8,7 +8,7 @@ import static org.assertj.core.api.Assertions.assertThat
 import static org.assertj.core.api.Assertions.assertThatNullPointerException
 import static org.assertj.core.api.Assertions.assertThatThrownBy
 
-class StringValidationTest {
+class StringValidationTests {
 
     @Test
     void validateStringFieldReturnsTrueWithValidString() {

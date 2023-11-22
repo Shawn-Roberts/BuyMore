@@ -8,6 +8,7 @@ import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
 import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
+import jakarta.persistence.PrePersist
 import jakarta.persistence.Table
 import jakarta.validation.constraints.Email
 import jakarta.validation.constraints.NotNull
@@ -48,7 +49,6 @@ class ApplicationUser {
         setFirstName(firstName)
         setLastName(lastName)
         setEmail(email)
-        setUniqueID()
     }
 
     //GETTERS
@@ -75,6 +75,8 @@ class ApplicationUser {
             this.email = new String(email)
     }
 
-    private setUniqueID() { this.uniqueID = UUID.randomUUID() }
+    //JPA CALLBACKS
+    @PrePersist
+    private void setUniqueID() { this.uniqueID = UUID.randomUUID() }
 
 }

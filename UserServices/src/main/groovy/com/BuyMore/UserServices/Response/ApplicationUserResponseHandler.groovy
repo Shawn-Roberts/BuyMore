@@ -4,7 +4,7 @@ import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 
 abstract class ApplicationUserResponseHandler {
-    static ResponseEntity<Object> generateResponse(String message, HttpStatus status, Object responseObj) {
+    static final ResponseEntity<Object> generateResponse(String message, HttpStatus status, Object responseObj) {
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("message", message);
         map.put("status", status.value());

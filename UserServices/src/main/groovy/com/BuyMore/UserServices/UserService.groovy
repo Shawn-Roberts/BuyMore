@@ -40,7 +40,7 @@ class UserService{
 
         )
 
-        users.each {it -> applicationUserDAO.saveApplicationUser(it)}
+//        users.each {it -> applicationUserDAO.saveApplicationUser(it)}
 
 
     }
